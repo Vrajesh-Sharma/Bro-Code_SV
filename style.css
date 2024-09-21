@@ -1,0 +1,499 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafc;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #2d6187;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left h1 {
+    font-size: 2em;
+    color: #e9f2f9;
+    transition: color 0.4s ease;
+}
+
+.navbar-left h1:hover {
+    color: #74c7c1;
+}
+
+.navbar-center ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-center ul li {
+    position: relative;
+}
+
+.navbar-center ul li a {
+    color: #e9f2f9;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 5px;
+    transition: color 0.4s ease;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-center ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background-color: #e9f2f9;
+    transition: width 0.4s ease;
+}
+
+.navbar-center ul li a:hover {
+    color: #74c7c1;
+}
+
+.navbar-center ul li a:hover::after {
+    width: 100%;
+}
+
+.navbar-right .create-account-btn {
+    background-color: #74c7c1;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+.navbar-right .create-account-btn:hover {
+    background-color: #569d98;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-right .create-account-btn:active {
+    transform: scale(0.95);
+    background-color: #498b8a;
+}
+
+/* Blur effect when hovering on center menu items */
+.navbar-center ul:hover .nav-item {
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+}
+
+.navbar-center ul li:hover .nav-item {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+
+.appointment-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    margin: 30px 50px;
+    background-color: #f0f8ff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.block-left {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.block-left h2 {
+    font-size: 2.5em;
+    color: #2d6187;
+    margin-bottom: 15px;
+}
+
+.block-left p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #4f4f4f;
+}
+
+.p-content {
+    display: flex;
+    align-items: center;
+}
+
+.p-content img {
+    width: 20%; 
+    height: auto; 
+    max-width: 150px; 
+    margin-right: 15px; /* Adds space between the image and the text */
+    /* Rectangular shape, no border-radius */
+}
+
+.p-content span {
+    flex: 1; /* Takes the remaining space */
+    font-size: 1em; /* You can reduce the font size a bit to make the image look larger */
+    color: #4f4f4f;
+    line-height: 1.6;
+}
+
+.book-appointment-btn {
+    background-color: #74c7c1;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+.book-appointment-btn:hover {
+    background-color: #569d98;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.block-right {
+    flex: 1;
+    text-align: center;
+}
+
+.block-right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes buttonGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 123, 204, 0.5), 0 0 30px rgba(0, 123, 204, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 123, 204, 0.7), 0 0 50px rgba(0, 123, 204, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 123, 204, 0.5), 0 0 30px rgba(0, 123, 204, 0.3);
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column; /* Stack the heading on top */
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px; /* Set max-width for larger screens */
+    text-align: center;
+}
+
+.choices h3 {
+    font-size: 2.2em;
+    color: #003366;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 10px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Align buttons in a single line */
+    align-items: center;
+    gap: 40px; /* Spacing between buttons */
+    margin-top: 30px;
+    width: 100%;
+}
+
+.choice button {
+    width: 180px;
+    height: 180px;
+    background-color: #1e3d59;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+    animation: buttonGlow 3s infinite ease-in-out; /* Glowing effect for buttons */
+    position: relative;
+}
+
+.choice button:hover {
+    background-color: #007acc;
+    transform: scale(1.1); /* Slight scaling on hover */
+    box-shadow: 0 15px 25px rgba(0, 123, 204, 0.6); /* Stronger shadow on hover */
+}
+
+.choice button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 153, 255, 0.5); /* Focus outline */
+}
+
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .buttons-container {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        gap: 20px;
+    }
+    .choice button {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .choices h3 {
+        font-size: 1.8em;
+    }
+    .choice button {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+    }
+}
+
+.specialties-section {
+    text-align: center;
+    padding: 30px;
+    margin: 20px auto; 
+    width: 80%; 
+}
+
+.specialties-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap; 
+    gap: 15px; 
+    max-width: 100%;
+    margin: 0 auto; 
+}
+
+.specialty-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 6 - 15px); /* Adjust width for 6 items with gap */
+}
+
+.specialty-item img {
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.8s ease, box-shadow 0.8s ease, border 0.8s ease;
+}
+
+.specialty-item img:hover {
+    animation: rotateAndReturn 0.6s ease-in-out; /* Adds an animation on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Increases the shadow depth */
+    border: 3px solid #2d6187; /* Adds a border that matches the text color */
+}
+
+.specialty-item p {
+    margin-top: 6px;
+    font-size: 0.9em;
+    color: #2d6187;
+    transition: color 0.3s ease;
+}
+
+.specialty-item:hover p {
+    color: #000000; /* Changes text color on hover */
+    font-weight: bold;
+}
+
+/* Keyframes for rotate and return effect */
+@keyframes rotateAndReturn {
+    0% {
+        transform: rotate(0deg) scale(1); /* Start from normal */
+    }
+    50% {
+        transform: rotate(10deg) scale(1.05); /* Rotate slightly and scale up */
+    }
+    100% {
+        transform: rotate(0deg) scale(1); /* Return to normal */
+    }
+}
+
+.top-doctors-section {
+    text-align: center;
+    padding: 30px;
+    margin: 30px auto;
+    width: 80%;
+}
+
+.top-doctors-section h3 {
+    font-size: 1.8em;
+    color: #2d6187;
+    margin-bottom: 30px;
+}
+
+.doctors-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.doctor-card {
+    width: calc(100% / 5 - 20px); /* 5 cards per row with 20px gap */
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.doctor-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.doctor-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Ensures square shape */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.doctor-info {
+    text-align: left;
+}
+
+.availability {
+    font-size: 0.9em;
+    color: green;
+    margin-bottom: 5px;
+}
+
+.doctor-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2d6187;
+}
+
+.specialization {
+    font-size: 0.9em;
+    color: #4f4f4f;
+}
+
+.more-doctors-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #74c7c1;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+.more-doctors-btn:hover {
+    background-color: #569d98;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.more-doctors-btn:active {
+    transform: scale(0.95);
+    background-color: #498b8a;
+}
+
+/* Appointment Section Styles */
+.appointment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px;
+    margin: 50px auto;
+    width: 80%;
+    background-color: #2d3e50; /* Dark background */
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-left {
+    flex: 70%;
+    padding-right: 30px;
+}
+
+.appointment-left h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.create-account-btn {
+    background-color: #74c7c1;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+.create-account-btn:hover {
+    background-color: #569d98;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-right {
+    flex: 30%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.appointment-right img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    transform: translateY(41.25%); /* Shift 2% upwards, outside the background */
+}
