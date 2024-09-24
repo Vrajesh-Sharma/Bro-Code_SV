@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Doctors - Sanjeevani</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f5;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: #2d6187;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .navbar h1 {
+        font-size: 24px;
+    }
+    
+    .navbar ul {
+        list-style: none;
+        display: flex;
+    }
+    
+    .navbar ul li {
+        margin: 0 15px;
+    }
+    
+    .navbar ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .create-account-btn {
+        background-color: #ff5722;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .top-doctors-section {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .top-doctors-section h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #2d6187;
+    }
+    
+    .selected-doctor-card {
+        display: flex;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 30px;
+        align-items: center;
+    }
+    
+    .selected-doctor-card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+    
+    .doctor-info {
+        flex-grow: 1;
+    }
+    
+    .doctor-info p {
+        margin: 5px 0;
+        font-size: 16px;
+    }
+    
+    .book-appointment-btn {
+        background-color: #74c7c1;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .doctors-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .doctor-card {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    .doctor-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .doctor-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    
+    .doctor-name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .specialization {
+        font-size: 16px;
+        color: #6c757d;
+    }
+    
+    .availability {
+        font-size: 14px;
+        color: green;
+    }
+    
+    .more-doctors-btn {
+        margin-top: 20px;
+        padding: 12px 30px;
+        background-color: #74c7c1;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.4s ease, transform 0.2s ease;
+    }
+
+    .more-doctors-btn:hover {
+        background-color: #569d98;
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .more-doctors-btn:active {
+        transform: scale(0.95);
+        background-color: #498b8a;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1>Sanjeevani</h1>
+        </div>
+        <div class="navbar-center">
+            <ul>
+                <li><a href="#" class="nav-item">Home</a></li>
+                <li><a href="#" class="nav-item">All Doctors</a></li>
+                <li><a href="#" class="nav-item">About</a></li>
+                <li><a href="#" class="nav-item">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <button class="create-account-btn">Create Account</button>
+        </div>
+    </nav>    
+
+    <div class="top-doctors-section">
+        <h2>Top Doctors to Book</h2>
+        
+        <!-- Selected Doctor Card -->
+        <div class="selected-doctor-card">
+            <img id="selected-doctor-img" src="asset/doc1.png" alt="Selected Doctor">
+            <div class="doctor-info">
+                <p id="selected-doctor-name">Dr. John Doe</p>
+                <p id="selected-doctor-specialization">Cardiologist</p>
+                <p id="selected-doctor-availability">Available</p>
+                <p id="selected-doctor-hospital">Works at: General Hospital</p>
+                <p id="selected-doctor-education">Education: MBBS, MD - Cardiology</p>
+                <p id="selected-doctor-description">Highly experienced Cardiologist with over 20 years of expertise in cardiac care.</p>
+                <button class="book-appointment-btn">Book Appointment</button>
+            </div>
+        </div>
+
+        <!-- Other Doctor Cards -->
+        <div class="doctors-container">
+            <div class="doctor-card" onclick="selectDoctor('Dr. Jane Smith', 'Dermatologist', 'Available', 'Highly rated Dermatologist specializing in skincare.', 'asset/doc2.png', 'Skin Care Hospital', 'MBBS, MD - Dermatology')">
+                <img src="asset/doc2.png" alt="Doctor 2">
+                <p class="doctor-name">Dr. Jane Smith</p>
+                <p class="specialization">Dermatologist</p>
+                <p class="availability">Available</p>
+            </div>
+
+            <div class="doctor-card" onclick="selectDoctor('Dr. Emily White', 'Neurologist', 'Available', 'Experienced Neurologist known for treating complex brain disorders.', 'asset/doc3.png', 'Brain Research Institute', 'MBBS, MD - Neurology')">
+                <img src="asset/doc3.png" alt="Doctor 3">
+                <p class="doctor-name">Dr. Emily White</p>
+                <p class="specialization">Neurologist</p>
+                <p class="availability">Available</p>
+            </div>
+
+            <div class="doctor-card" onclick="selectDoctor('Dr. James Brown', 'Gynecologist', 'Available', 'Expert Gynecologist with a focus on women\'s health.', 'asset/doc4.png', 'Women\'s Health Clinic', 'MBBS, MD - Gynecology')">
+                <img src="asset/doc4.png" alt="Doctor 4">
+                <p class="doctor-name">Dr. James Brown</p>
+                <p class="specialization">Gynecologist</p>
+                <p class="availability">Available</p>
+            </div>
+
+            <div class="doctor-card" onclick="selectDoctor('Dr. Sarah Lee', 'Pediatrician', 'Available', 'Renowned Pediatrician with years of experience in child healthcare.', 'asset/doc5.png', 'Children\'s Hospital', 'MBBS, MD - Pediatrics')">
+                <img src="asset/doc5.png" alt="Doctor 5">
+                <p class="doctor-name">Dr. Sarah Lee</p>
+                <p class="specialization">Pediatrician</p>
+                <p class="availability">Available</p>
+            </div>
+        </div>
+
+        <br><br>
+        <button class="more-doctors-btn">More</button>
+    </div>
+
+    <script>
+        // JavaScript function to update the selected doctor card with detailed information
+        function selectDoctor(name, specialization, availability, description, imgSrc, hospital, education) {
+            document.getElementById('selected-doctor-name').innerText = name;
+            document.getElementById('selected-doctor-specialization').innerText = specialization;
+            document.getElementById('selected-doctor-availability').innerText = availability;
+            document.getElementById('selected-doctor-hospital').innerText = "Works at: " + hospital;
+            document.getElementById('selected-doctor-education').innerText = "Education: " + education;
+            document.getElementById('selected-doctor-description').innerText = description;
+            document.getElementById('selected-doctor-img').src = imgSrc;
+        }
+    </script>
+</body>
+</html>
