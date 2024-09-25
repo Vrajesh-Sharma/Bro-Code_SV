@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login - Sanjeevani</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h1>Sanjeevani</h1>
+            </div>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="index.html" class="nav-item">Home</a></li>
+                    <li><a href="page.html" class="nav-item">All Doctors</a></li>
+                    <li><a href="#" class="nav-item">About</a></li>
+                    <li><a href="#" class="nav-item">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <a href="createacc.html"><button class="create-account-btn">Create Account</button></a>
+            </div>
+        </nav> 
+
+        <div class="container">
+            <br><span>Login</span><br>
+            <p>You can login to your account here!</p>
+            <div class="form">
+                <form id="login-form">
+                    <input type="email" id="email" placeholder="Email"><br>
+                    <input type="password" id="password" placeholder="Password"><br>
+
+                    <div class="error-message" id="error-message">*All fields are required.</div>
+                    <button type="submit" class="submit">Log in</button>
+                </form>
+            </div>
+            <div id="log">Create an account? <a href="createacc.html">Sign up</a></div>
+        </div>
+    </div>
+
+    <div id="No">
+        You are loggen in successfully!
+        <br><br>
+        <button id="ok-btn">OK</button>
+    </div>
+    <script>
+        const form = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+        const no = document.getElementById("No");
+        const wrapper = document.querySelector(".wrapper");
+        const okBtn = document.getElementById("ok-btn");
+
+        form.addEventListener('submit', function(event) {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (!email || !password) {
+            event.preventDefault();               
+            errorMessage.style.display = 'block'; 
+        } else {
+            event.preventDefault();               
+            errorMessage.style.display = 'none';  
+            no.style.display = "block";           
+            wrapper.style.opacity = "0.4";       
+        }
+        });
+
+        okBtn.addEventListener('click', function() {
+            no.style.display = "none";   
+            wrapper.style.opacity = "1"; })
+
+    </script>
+</body>
+</html>
